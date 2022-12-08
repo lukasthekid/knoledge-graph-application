@@ -1,0 +1,472 @@
+@prefix :     <http://semantics.id/ns/example/film#> .
+@prefix dc:   <http://purl.org/dc/terms/> .
+@prefix ex:   <http://semantics.id/ns/example#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+xsd:integer  rdf:type    rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , xsd:integer .
+
+rdf:rest  rdf:type          rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:List ;
+        rdfs:range          rdf:List ;
+        rdfs:subPropertyOf  rdf:rest .
+
+rdf:List  rdf:type       rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:predicate  rdf:type     rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:predicate .
+
+rdf:Property  rdf:type   rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdf:Property .
+
+:Composer  rdf:type      rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Composer" ;
+        rdfs:subClassOf  rdfs:Resource , foaf:Person , :Composer .
+
+rdfs:label  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Literal .
+
+:ScriptWriter  rdf:type  rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "ScriptWriter" ;
+        rdfs:subClassOf  foaf:Person , :ScriptWriter , rdfs:Resource .
+
+:FilmStudio  rdf:type    rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "FilmStudio" ;
+        rdfs:subClassOf  rdfs:Resource , :FilmStudio .
+
+rdf:Statement  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdfs:Class  rdf:type     rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdfs:Class .
+
+rdf:type  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Class .
+
+rdfs:Resource  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:subject  rdf:type       rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:subject .
+
+rdf:XMLLiteral  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
+
+rdfs:comment  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Literal .
+
+rdfs:range  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+rdfs:subPropertyOf  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdf:Property .
+
+foaf:Person  rdf:type    rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , foaf:Person .
+
+rdf:object  rdf:type        rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:object .
+
+xsd:string  rdf:type     rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , xsd:string .
+
+:Soundtrack  rdf:type    rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Soundtrack" ;
+        rdfs:subClassOf  rdfs:Resource , :Artwork , :Soundtrack .
+
+:Performer  rdf:type     rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Performer" ;
+        rdfs:subClassOf  rdfs:Resource , :Performer .
+
+xsd:float  rdf:type      rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , xsd:float .
+
+:Film   rdf:type         rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Film" ;
+        rdfs:subClassOf  rdfs:Resource , :Artwork , :Film .
+
+:Genre  rdf:type         rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Genre" ;
+        rdfs:subClassOf  rdfs:Resource , :Genre .
+
+rdf:nil  rdf:type  rdf:List , rdfs:Resource .
+
+rdfs:domain  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+rdfs:Literal  rdf:type   rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
+
+rdf:first  rdf:type         rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:List ;
+        rdfs:subPropertyOf  rdf:first .
+
+rdfs:subClassOf  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdfs:Class ;
+        rdfs:range   rdfs:Class .
+
+:Artwork  rdf:type       rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Artwork" ;
+        rdfs:subClassOf  rdfs:Resource , :Artwork .
+
+:Director  rdf:type      rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Director" ;
+        rdfs:subClassOf  rdfs:Resource , foaf:Person , :Director .
+
+:Actor  rdf:type         rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "Actor" ;
+        rdfs:subClassOf  foaf:Person , :Performer , :Actor , rdfs:Resource .
+
+xsd:date  rdf:type       rdfs:Class , rdfs:Datatype , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , xsd:date .
+
+:duration  rdf:type  owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :Artwork ;
+        rdfs:label   "duration" ;
+        rdfs:range   xsd:float .
+
+foaf:knows  rdf:type        owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         foaf:Person ;
+        rdfs:range          foaf:Person ;
+        rdfs:subPropertyOf  foaf:knows .
+
+:hasSoundtrack  rdf:type  owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :Film ;
+        rdfs:label   "hasSoundtrack" ;
+        rdfs:range   :Soundtrack .
+
+ex:julius_avery  rdf:type  :ScriptWriter , :Director , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Julius Avery" ;
+        :gender    "male" .
+
+:kyle_maclachlan  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1959-02-22"^^xsd:date ;
+        :fullName     "Kyle Merritt MacLachlan" ;
+        :gender       "male" .
+
+ex:film_4  rdf:type    :Film , owl:NamedIndividual , :Artwork , rdfs:Resource ;
+        rdfs:label     "Dune" ;
+        :hasActor      :zendaya ;
+        :hasComposer   :hans_zimmer ;
+        :hasCrew       :hans_zimmer ;
+        :hasGenre      :genre_science_fiction ;
+        :hasPerformer  :zendaya ;
+        :releaseYear   2021 .
+
+ex:EntertainmentOne  rdf:type  :FilmStudio , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label        "Entertainment One" ;
+        :establishedDate  "1973-01-01"^^xsd:date .
+
+:prequel  rdf:type     owl:TransitiveProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain    :Film ;
+        rdfs:label     "prequel" ;
+        rdfs:range     :Film ;
+        owl:inverseOf  :sequel .
+
+:hasActor  rdf:type         owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasActor" ;
+        rdfs:range          :Actor ;
+        rdfs:subPropertyOf  :hasPerformer , :hasActor ;
+        owl:minCardinality  1 .
+
+ex:writer_5  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Evan Spiliotopoulos" .
+
+ex:WaltDisneyPictures
+        rdf:type          :FilmStudio , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label        "Walt Disney Pictures" ;
+        :establishedDate  "1985-06-21"^^xsd:date .
+
+ex:film_3  rdf:type       owl:NamedIndividual , :Film , :Artwork , rdfs:Resource ;
+        rdfs:label        "Beauty and the Beast" ;
+        :hasActor         ex:dan_stevens , ex:emma_watson , ex:ewan_mcgregor ;
+        :hasCrew          ex:bill_condon , ex:writer_4 , ex:writer_5 ;
+        :hasDirector      ex:bill_condon ;
+        :hasFilmStudio    ex:WaltDisneyPictures ;
+        :hasGenre         :genre_family , :genre_romance ;
+        :hasPerformer     ex:dan_stevens , ex:emma_watson , ex:ewan_mcgregor ;
+        :hasScriptWriter  ex:writer_4 , ex:writer_5 ;
+        :hasSoundtrack    :Belle ;
+        :releaseYear      2017 .
+
+dc:created  rdf:type  owl:AnnotationProperty .
+
+dc:creator  rdf:type  owl:AnnotationProperty .
+
+:Belle  rdf:type       :Soundtrack , owl:NamedIndividual , :Artwork , rdfs:Resource ;
+        rdfs:label     "Belle (Soundtrack Version)" ;
+        rdfs:seeAlso   "https://www.youtube.com/watch?v=piYIZaoBJMQ" ;
+        :hasPerformer  :alan_menken .
+
+dc:title  rdf:type  owl:AnnotationProperty .
+
+ex:bill_condon  rdf:type  :Director , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Bill Condon" ;
+        :gender    "male" .
+
+:genre_science_fiction
+        rdf:type    :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Science Fiction"@en .
+
+:hasGenre  rdf:type         owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasGenre" ;
+        rdfs:range          :Genre ;
+        owl:minCardinality  1 .
+
+:establishedDate  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :FilmStudio ;
+        rdfs:label   "establishedDate" ;
+        rdfs:range   xsd:date .
+
+:friendOf  rdf:type         owl:SymmetricProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         foaf:Person ;
+        rdfs:label          "friendOf" ;
+        rdfs:range          foaf:Person ;
+        rdfs:subPropertyOf  foaf:knows , :friendOf .
+
+ex:writer_4  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Stephen Chbosky" ;
+        :gender    "male" .
+
+dc:contributor  rdf:type  owl:AnnotationProperty .
+
+:hasPerformer  rdf:type     owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Artwork ;
+        rdfs:label          "hasPerformer" ;
+        rdfs:range          :Performer ;
+        rdfs:subPropertyOf  :hasPerformer .
+
+:genre_romance  rdf:type  :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Romance" .
+
+:hasScriptWriter  rdf:type  owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasScriptWriter" ;
+        rdfs:range          :ScriptWriter ;
+        rdfs:subPropertyOf  :hasCrew , :hasScriptWriter ;
+        owl:minCardinality  1 .
+
+ex:dan_stevens  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1982-10-10"^^xsd:date ;
+        :fullName     "Dan Stevens" ;
+        :gender       "male" .
+
+:genre_action  rdf:type  :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Action" .
+
+<http://semantics.id/ns/example/film>
+        rdf:type        owl:Ontology ;
+        dc:contributor  "Marta Sabou" , "Laura Waltersdorfer" , "Filip Kovacevic" ;
+        dc:created      "2022-09-30" ;
+        dc:creator      "Fajar J. Ekaputra" ;
+        dc:description  "An ontology about film and related concepts developed for ISS course at TU Wien." ;
+        dc:title        "The Film Ontology" ;
+        owl:versionIRI  <http://semantics.id/ns/example/film/1.0.0> .
+
+:hasComposer  rdf:type      owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasComposer" ;
+        rdfs:range          :Composer ;
+        rdfs:subPropertyOf  :hasCrew , :hasComposer .
+
+ex:film_2  rdf:type       owl:NamedIndividual , :Film , :Artwork , rdfs:Resource ;
+        rdfs:label        "Son of a Gun" ;
+        :hasActor         ex:ewan_mcgregor , ex:alicia_vikander ;
+        :hasCrew          ex:julius_avery , ex:writer_3 ;
+        :hasDirector      ex:julius_avery ;
+        :hasFilmStudio    ex:EntertainmentOne ;
+        :hasGenre         :genre_action , :genre_drama ;
+        :hasPerformer     ex:ewan_mcgregor , ex:alicia_vikander ;
+        :hasScriptWriter  ex:writer_3 , ex:julius_avery ;
+        :releaseYear      2014 .
+
+ex:emma_watson  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1990-04-15"^^xsd:date ;
+        :fullName     "Emma Watson" ;
+        :gender       "female" .
+
+ex:marc_forster  rdf:type  :Director , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Marc Forster" ;
+        :gender    "male" .
+
+:releaseYear  rdf:type  owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :Film ;
+        rdfs:label   "releaseYear" ;
+        rdfs:range   xsd:integer .
+
+:hasDirector  rdf:type      owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasDirector" ;
+        rdfs:range          :Director ;
+        rdfs:subPropertyOf  :hasCrew , :hasDirector ;
+        owl:minCardinality  1 .
+
+:hans_zimmer  rdf:type  :Composer , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Hans Zimmer" .
+
+:hasCrew  rdf:type          owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasCrew" ;
+        rdfs:range          foaf:Person ;
+        rdfs:subPropertyOf  :hasCrew .
+
+:genre_drama  rdf:type  :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Drama" .
+
+:dateOfBirth  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  foaf:Person ;
+        rdfs:label   "dateOfBirth" ;
+        rdfs:range   xsd:date .
+
+ex:writer_3  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "John Collee" ;
+        :gender    "male" .
+
+:fullName  rdf:type  owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  foaf:Person ;
+        rdfs:label   "fullName" ;
+        rdfs:range   xsd:string .
+
+:genre_animation  rdf:type  :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Animation" .
+
+owl:minCardinality  rdf:type  owl:AnnotationProperty .
+
+ex:film_1  rdf:type       :Film , owl:NamedIndividual , :Artwork , rdfs:Resource ;
+        rdfs:label        "Christopher Robin" ;
+        :hasActor         ex:ewan_mcgregor , ex:hayley_atwell ;
+        :hasCrew          ex:marc_forster , ex:writer_2 , ex:writer_1 ;
+        :hasDirector      ex:marc_forster ;
+        :hasFilmStudio    ex:WaltDisneyPictures ;
+        :hasGenre         :genre_family , :genre_animation ;
+        :hasPerformer     ex:ewan_mcgregor , ex:hayley_atwell ;
+        :hasScriptWriter  ex:writer_2 , ex:writer_1 ;
+        :releaseYear      2018 .
+
+ex:MandevilleFilms  rdf:type  :FilmStudio , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label        "Mandeville Films" ;
+        :establishedDate  "1955-01-01"^^xsd:date .
+
+:hasFilmStudio  rdf:type    owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Film ;
+        rdfs:label          "hasFilmStudio" ;
+        rdfs:range          :FilmStudio ;
+        owl:minCardinality  1 .
+
+:zendaya  rdf:type    :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1996-09-01"^^xsd:date ;
+        :fullName     "Zendaya Maree Stoermer Coleman" ;
+        :gender       "female" .
+
+:genre_family  rdf:type  :Genre , owl:NamedIndividual , rdfs:Resource ;
+        rdfs:label  "Family" .
+
+ex:writer_2  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Alex Ross" .
+
+ex:alicia_vikander  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :fullName  "Alicia Vikander" ;
+        :gender    "female" .
+
+:gender  rdf:type    owl:FunctionalProperty , owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  foaf:Person ;
+        rdfs:label   "gender" ;
+        rdfs:range   xsd:string .
+
+ex:ewan_mcgregor  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1971-03-31"^^xsd:date ;
+        :fullName     "Ewan McGregor" ;
+        :gender       "male" .
+
+dc:description  rdf:type  owl:AnnotationProperty .
+
+:alan_menken  rdf:type  :Performer , :Composer , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :fullName  "Alan Menken" ;
+        :gender    "male" .
+
+ex:writer_1  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
+        :dateOfBirth  "1966-06-07"^^xsd:date ;
+        :fullName     "Tom McCarthy" ;
+        :gender       "male" .
+
+:sequel  rdf:type    owl:TransitiveProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :Film ;
+        rdfs:label   "sequel" ;
+        rdfs:range   :Film .
+
+ex:hayley_atwell  rdf:type  :Actor , owl:NamedIndividual , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "1982-04-05"^^xsd:date ;
+        :fullName     "Hayley Atwell" ;
+        :gender       "female" .
+
+ex:film_5  rdf:type    :Film , owl:NamedIndividual , :Artwork , rdfs:Resource ;
+        rdfs:label     "Dune" ;
+        :hasActor      :kyle_maclachlan ;
+        :hasGenre      :genre_science_fiction ;
+        :hasPerformer  :kyle_maclachlan ;
+        :releaseYear   1984 .
+
+:budget  rdf:type    owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
+        rdfs:domain  :Film ;
+        rdfs:label   "budget" ;
+        rdfs:range   xsd:float .
+
+rdfs:Container  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container .
+
+rdfs:ContainerMembershipProperty
+        rdf:type         rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:ContainerMembershipProperty , rdf:Property .
+
+rdf:Bag  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdf:Bag , rdfs:Container .
+
+rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdf:Seq , rdfs:Container .
+
+rdfs:Datatype  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Datatype , rdfs:Class .
+
+rdf:Alt  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdf:Alt , rdfs:Container .
+
+rdfs:isDefinedBy  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:isDefinedBy , rdfs:seeAlso .
+
+rdfs:seeAlso  rdf:type      rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:seeAlso .
+
+owl:TransitiveProperty
+        rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:AnnotationProperty
+        rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:SymmetricProperty
+        rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:NamedIndividual  rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:DatatypeProperty  rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:ObjectProperty  rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:FunctionalProperty
+        rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:Class  rdf:type  rdfs:Class , rdfs:Resource .
+
+owl:Ontology  rdf:type  rdfs:Class , rdfs:Resource .

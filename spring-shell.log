@@ -1,0 +1,115 @@
+1670499242438:add --a 1 --b 2
+1670499624805:load
+1670500669600:print
+1670500688822:load
+1670500691533:print
+1670502014255:load
+1670502017158:print
+1670511104336:load
+1670511110704:addStudio
+1670511122776:addstudio
+1670511127792:add studio
+1670511147528:addstudio
+1670511173345:load
+1670511175176:add
+1670511229833:load
+1670511233040:add
+1670511438913:load
+1670511441096:add
+1670511497073:load
+1670511499304:add
+1670511502144:print
+1670512400834:load
+1670512403113:add
+1670512405961:print
+1670512508386:load
+1670512510929:add
+1670512513160:print
+1670512629162:load
+1670512630913:add
+1670512633233:print
+1670514459854:load
+1670514470772:select
+1670515304493:load
+1670515315356:add
+1670515318764:print
+1670519630922:load-ontology
+1670519671834:add-class -n TestKlasse -l test klasse
+1670519727274:print
+1670519739307:load
+1670519749041:load-ontology
+1670519771257:add-class -n test -l test2
+1670519913499:load-ontology
+1670519936170:add-class -n test -l tester
+1670520098874:load-ontology
+1670520111490:add-class -n test -l tsstdhghf
+1670520115417:print
+1670520365995:load-ontology
+1670520390851:add-class -n Hilfe -l hilfe class
+1670520393473:print
+1670520464979:load-ontology
+1670520502307:add-class -n Test -l 'tester klasse' -subclassname Film
+1670520504994:print
+1670520630819:load-ontology
+1670520692420:add-class -n Hilfe -l hughdjkfjlshl -subclassname Director
+1670520694986:print
+1670520822939:load-ontology
+1670520838131:add-class -n Hilfe -l ohofhosd
+1670520841209:print
+1670520892995:load-ontology
+1670520918212:add-class -n Hilfe -l hkjsfdksfb -subclassname Actor
+1670521037139:load-ontology
+1670521053075:add-class -n Test -l jhsdfs -subcname Actor
+1670521167596:load-ontology
+1670521194275:add-class -n Hilfe -l kjhakf -subcname Film
+1670521268044:load-ontology
+1670521284635:add-class -n Hilfe -l jshdj --s Film
+1670521351724:load-ontology
+1670521366732:add-class -n Hilfe -l kjdhkfd --s Film
+1670521368610:print
+1670521598652:load-ontology
+1670521675324:add-property -data -domain Film -label hjkfhsdkhs -d
+1670521794100:load-ontology
+1670521820268:add-property -data -domain Film -l jhhkfd --d
+1670522056564:load-ontology
+1670522196614:add-property --data --domain Film --l hdhdhdhdhd --d
+1670522272653:load-ontology
+1670522332957:add-property --data --domain Film --l testpropertyhjhshhkdk --d
+1670522335155:print
+1670522641005:load-ontology
+1670522700221:add-person --n Lukas --d 2020-01-01 --g male --t actor
+1670522703259:print
+1670522808525:load-ontology
+1670522839109:add-person --n Lukas --t ACTOR
+1670522936509:load-ontology
+1670522952605:add-person --n Lukas --t actor
+1670522954780:print
+1670523006693:load-ontology
+1670523027533:add-film --label TESTFilm
+1670523029780:print
+1670523862534:load-ontology
+1670523875429:show-queries
+1670523891373:run-query 1
+1670523913861:run-query 2
+1670523919613:run-query 3
+1670523924149:run query 4
+1670523942237:run query 5
+1670524015662:load-ontology
+1670524023030:run-query 4
+1670524144038:load-ontology
+1670524152301:run-query 4
+1670524169197:run-query 5
+1670524760047:show-queries
+1670524764781:add-person
+1670524770886:load-ontology
+1670524784046:export
+1670524890534:export --f n3
+1670525245648:exit
+1670525678304:load-ontology
+1670525683743:show-queries
+1670525691423:run-query 5
+1670525747816:load-ontology
+1670525755703:run query 5
+1670525763927:run-query 5
+1670525832544:load-ontology
+1670525836903:run-query 5
