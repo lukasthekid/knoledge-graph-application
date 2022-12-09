@@ -113,3 +113,18 @@
 1670525763927:run-query 5
 1670525832544:load-ontology
 1670525836903:run-query 5
+1670573325519:load-ontology
+1670573382453:activate-reasoners owl
+1670573723967:load-ontology
+1670573747747:activate-reasoners OWL
+1670573752720:print --inf
+1670573931682:load-ontology
+1670573972948:add-class -n Toaster -l hsvsfbklsdvbfkb
+1670574056311:add-property --domain Actor --range Toaster --l hasToaster
+1670574167975:load-ontology
+1670574191938:add-class -n Toaster -l jknsdvskns
+1670574196247:add-property --domain Actor --range Toaster --l hasToaster
+1670574267154:add-person --n LUkasBurtscher --d 2020-01-09 --g male --t actor
+1670574304527:add-film-studio --l PornHub --d 2020-02-02
+1670574353170:export
+1670574365050:print

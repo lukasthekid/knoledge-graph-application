@@ -4,10 +4,8 @@ import at.tuwien.assignment3.config.TextConfig;
 import at.tuwien.assignment3.utils.PersonType;
 import at.tuwien.assignment3.utils.ReasonerType;
 import lombok.extern.apachecommons.CommonsLog;
-import lombok.extern.java.Log;
 import org.apache.jena.riot.Lang;
 import org.springframework.shell.Availability;
-import org.springframework.shell.ExitRequest;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
@@ -32,8 +30,8 @@ public class Commander implements TextConfig, Quit.Command {
     }
 
     @ShellMethod("print ontology in terminal")
-    public void print(){
-        rdfService.iteratingRdfData();
+    public void print(@ShellOption(value = "--inf")boolean inf){
+        rdfService.print(inf);
     }
     @ShellMethod("activate a reasoner")
     public void activateReasoners(String reasoner){
@@ -42,13 +40,13 @@ public class Commander implements TextConfig, Quit.Command {
             rdfService.activateReasoners(r);
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
 
     @ShellMethod(key = "export", value = "export graph")
     public void exportGraph(@ShellOption(value = "--f", defaultValue = "turtle") String format,
-                            @ShellOption(value = "--p", defaultValue = "./output/output.ttl") String path){
+                            @ShellOption(value = "--p", defaultValue = "./output/output.ttl") String path,
+                            @ShellOption(value = "--inf")boolean inf){
         format = format.toUpperCase();
         Lang f = Lang.TURTLE;
         if (format.equals("N3")) f = Lang.N3;
@@ -57,7 +55,7 @@ public class Commander implements TextConfig, Quit.Command {
         if (format.equals("RDFJSON")) f = Lang.RDFJSON;
         if (format.equals("CSV")) f = Lang.CSV;
 
-        rdfService.writeRdfFile(path, f);
+        rdfService.writeRdfFile(path, f, inf);
     }
 
     /**
@@ -75,12 +73,11 @@ public class Commander implements TextConfig, Quit.Command {
             System.out.println("successfully added a class");
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
 
     @ShellMethod("add property")
-    public void addProperty(boolean data,
+    public void addProperty(@ShellOption(value = "--data")boolean data,
                             String domain,
                             @ShellOption(value = "--range",defaultValue = "n")String range,
                             @ShellOption(value = "--l")String label,
@@ -99,7 +96,6 @@ public class Commander implements TextConfig, Quit.Command {
             }
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }
@@ -108,7 +104,7 @@ public class Commander implements TextConfig, Quit.Command {
     public void addPerson(@ShellOption(value = "--n")String fullName,
                           @ShellOption(value = "--d",defaultValue = "n") String dateOfBirth,
                           @ShellOption(value = "--g",defaultValue = "n") String gender,
-                          @ShellOption(value = "--t",defaultValue = "n") String type){
+                          @ShellOption(value = "--t") String type){
         try{
             PersonType t = PersonType.valueOf(type.toUpperCase());
             LocalDate date = null;
@@ -117,7 +113,6 @@ public class Commander implements TextConfig, Quit.Command {
             System.out.println("successfully added a person of type: " + type);
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }
@@ -133,7 +128,6 @@ public class Commander implements TextConfig, Quit.Command {
             System.out.println("successfully added a film studio");
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }
@@ -147,7 +141,6 @@ public class Commander implements TextConfig, Quit.Command {
             System.out.println("successfully added a film");
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
 
@@ -183,7 +176,6 @@ public class Commander implements TextConfig, Quit.Command {
             }
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }

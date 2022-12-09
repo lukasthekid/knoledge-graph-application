@@ -16,8 +16,18 @@ rdf:rest  rdf:type          rdf:Property , rdfs:Resource ;
         rdfs:range          rdf:List ;
         rdfs:subPropertyOf  rdf:rest .
 
+:hasToaster  rdf:type       rdf:Property , rdfs:Resource ;
+        rdfs:domain         :Actor ;
+        rdfs:label          "hasToaster"@en ;
+        rdfs:range          :Toaster ;
+        rdfs:subPropertyOf  :hasToaster .
+
 rdf:List  rdf:type       rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:Resource .
+
+:Toaster  rdf:type       rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:label       "jknsdvskns"@en ;
+        rdfs:subClassOf  rdfs:Resource , :Toaster .
 
 rdf:predicate  rdf:type     rdf:Property , rdfs:Resource ;
         rdfs:domain         rdf:Statement ;
@@ -41,21 +51,21 @@ rdfs:label  rdf:type  rdf:Property , rdfs:Resource ;
         rdfs:label       "FilmStudio" ;
         rdfs:subClassOf  rdfs:Resource , :FilmStudio .
 
-rdf:Statement  rdf:type  rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource .
-
-rdfs:Class  rdf:type     rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , rdfs:Class .
-
-rdf:type  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:range  rdfs:Class .
+rdf:subject  rdf:type       rdf:Property , rdfs:Resource ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:subject .
 
 rdfs:Resource  rdf:type  rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:Resource .
 
-rdf:subject  rdf:type       rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:Statement ;
-        rdfs:subPropertyOf  rdf:subject .
+rdf:type  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Class .
+
+rdfs:Class  rdf:type     rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdfs:Class .
+
+rdf:Statement  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource .
 
 rdf:XMLLiteral  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 
@@ -183,6 +193,10 @@ ex:EntertainmentOne  rdf:type  :FilmStudio , owl:NamedIndividual , rdfs:Resource
 
 ex:writer_5  rdf:type  :ScriptWriter , owl:NamedIndividual , foaf:Person , rdfs:Resource ;
         :fullName  "Evan Spiliotopoulos" .
+
+ex:pornhub  rdf:type      :FilmStudio , rdfs:Resource ;
+        rdfs:label        "PornHub"@en ;
+        :establishedDate  "2020-02-02" .
 
 ex:WaltDisneyPictures
         rdf:type          :FilmStudio , owl:NamedIndividual , rdfs:Resource ;
@@ -419,6 +433,11 @@ ex:film_5  rdf:type    :Film , owl:NamedIndividual , :Artwork , rdfs:Resource ;
         :hasPerformer  :kyle_maclachlan ;
         :releaseYear   1984 .
 
+ex:lukasburtscher  rdf:type  :Actor , foaf:Person , :Performer , rdfs:Resource ;
+        :dateOfBirth  "2020-01-09" ;
+        :fullName     "LUkasBurtscher" ;
+        :gender       "male" .
+
 :budget  rdf:type    owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
         rdfs:domain  :Film ;
         rdfs:label   "budget" ;
@@ -427,15 +446,15 @@ ex:film_5  rdf:type    :Film , owl:NamedIndividual , :Artwork , rdfs:Resource ;
 rdfs:Container  rdf:type  rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:Container .
 
+rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdf:Seq , rdfs:Container .
+
 rdfs:ContainerMembershipProperty
         rdf:type         rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:ContainerMembershipProperty , rdf:Property .
 
 rdf:Bag  rdf:type        rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdf:Bag , rdfs:Container .
-
-rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdf:Seq , rdfs:Container .
 
 rdfs:Datatype  rdf:type  rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:Datatype , rdfs:Class .

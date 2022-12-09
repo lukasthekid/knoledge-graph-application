@@ -5,12 +5,12 @@ import at.tuwien.assignment3.utils.PersonType;
 import at.tuwien.assignment3.utils.ReasonerType;
 import lombok.Data;
 import lombok.extern.apachecommons.CommonsLog;
-import lombok.extern.java.Log;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.reasoner.Reasoner;
@@ -35,6 +35,7 @@ import java.time.LocalDate;
 public class RdfService implements TextConfig {
 
     private OntModel model;
+    private InfModel infModel;
     private boolean rdfLoaded;
 
     public RdfService(OntModel model) {
@@ -58,8 +59,12 @@ public class RdfService implements TextConfig {
 
     }
 
-    public void iteratingRdfData() {
-        model.listStatements().forEachRemaining(System.out::println);
+    public void print(boolean inf) {
+        if (inf && infModel!=null){
+            infModel.listStatements().forEachRemaining(System.out::println);
+        }else{
+            model.listStatements().forEachRemaining(System.out::println);
+        }
     }
 
     public void activateReasoners(ReasonerType type) {
@@ -68,17 +73,18 @@ public class RdfService implements TextConfig {
         else if (type.equals(ReasonerType.OWL)) {
             ReasonerRegistry.getOWLReasoner();
         }else reasoner = ReasonerRegistry.getTransitiveReasoner();
-        model = (OntModel) ModelFactory.createInfModel(reasoner, model);
+        infModel = ModelFactory.createInfModel(reasoner, model);
+
     }
 
-    public void writeRdfFile(String outputFile, Lang format) {
+    public void writeRdfFile(String outputFile, Lang format, boolean inf) {
+        Model m = inf?infModel:model;
         try {
             FileOutputStream fos = new FileOutputStream(outputFile);
-            RDFDataMgr.write(fos, model, format);
+            RDFDataMgr.write(fos, m, format);
             System.out.println("exported successfully into -> " + outputFile);
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
     /**
@@ -120,7 +126,6 @@ public class RdfService implements TextConfig {
             i.addLiteral(p, date.toString());
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }
@@ -146,7 +151,6 @@ public class RdfService implements TextConfig {
             i.setOntClass(c);
         }catch (Exception e){
             log.error(e);
-            System.out.println(e.getMessage());
         }
 
     }
@@ -181,7 +185,6 @@ public class RdfService implements TextConfig {
 
         } catch (IOException e) {
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
     public void constructQuery(String queryFile, String name) {
@@ -197,7 +200,6 @@ public class RdfService implements TextConfig {
 
         } catch (IOException e) {
             log.error(e);
-            System.out.println(e.getMessage());
         }
     }
     public static String readFile(String path, Charset encoding) throws IOException {
